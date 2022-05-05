@@ -1,4 +1,4 @@
-function wing_4_bar_linkage
+function dynamics
 clear all
 close all
 
@@ -23,9 +23,10 @@ z6_0 = 0;                  % initial deltadot in rad/s
 Z_0 = [z1_0, z2_0, z3_0, z4_0, z5_0, z6_0];
 
 % Define time
-T_span = [0: 0.005: 20];  % time range for simulation with specified time step
+T_span = [0 .1];  % time range for simulation with specified time step
 
 % run the ODEs
+%Opt = odeset('Events', @event_stop);
 [t, zout] = ode45(@cylindrical, T_span, Z_0);
 
 
@@ -92,11 +93,13 @@ T_span = [0: 0.005: 20];  % time range for simulation with specified time step
     function dzdt = cylindrical(T,Z)
 
 %  z1 = alpha z2 = alphadot z3 = beta z4 = betadot z5 = delta z6 = deltadot
-    dz1dt = Z(1);
-    dz2dt = Z(2);
+   
+    alphadot = Z(2);
+    alpha = T*alphadot;
+    T
 
-    dz3dt = (-L1*Z(2)*sin(Z(1)+Z(5))) / (L2*sin(Z(3)+Z(5)));
-    dz4dt = (L1*Z(2)*sin(Z(3)-Z(1))) / (L3*sin(Z(3)+Z(5)));
+    dz3dt = Z(4);
+    dz4dt = Z(6);
 
     g1 = L1*Z(2)^2*cos(Z(1))+L2*Z(4)^2*cos(Z(3))+L3*Z(6)^2*cos(Z(5));
     g2 = -L1*Z(2)^2*sin(Z(1))+L2*Z(4)^2*sin(Z(3))-L3*Z(6)^2*sin(Z(5));
@@ -104,7 +107,7 @@ T_span = [0: 0.005: 20];  % time range for simulation with specified time step
     dz5dt = (-g1*cos(Z(5))+g2*sin(Z(5))) / (L2*sin(Z(3)+Z(5)));
     dz6dt = (-g1*cos(Z(3))-g2*sin(Z(3))) / (L3*sin(Z(3)+Z(5)));
 
-    dzdt = [dz1dt;dz2dt;dz3dt;dz4dt;dz5dt;dz6dt];
+    dzdt = [alpha;alphadot;dz3dt;dz4dt;dz5dt;dz6dt];
 
 
 end

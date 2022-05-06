@@ -15,7 +15,7 @@ L4 = 2.22;              % length of the 2nd rod in m
 % Specify initial conditions for cartesian coordinates
 z1_0 = 0.52;               % initial alpha in rad
 z2_0 = 20;                 % initial alphadot in rad/s
-z3_0 = .174;               % initial beta in rad
+z3_0 = 0.174;               % initial beta in rad
 z4_0 = 0;                  % initial betadot in rad/s
 z5_0 = 1.39;               % initial delta in rad
 z6_0 = 0;                  % initial deltadot in rad/s
@@ -23,7 +23,7 @@ z6_0 = 0;                  % initial deltadot in rad/s
 Z_0 = [z1_0, z2_0, z3_0, z4_0, z5_0, z6_0];
 
 % Define time
-T_span = [0 .1];  % time range for simulation with specified time step
+T_span = [0 0.1];  % time range for simulation with specified time step
 
 % run the ODEs
 %Opt = odeset('Events', @event_stop);

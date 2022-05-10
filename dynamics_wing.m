@@ -26,7 +26,7 @@ phi = 30*pi/180;                   % fixed phi in rad
 sigma = 30*pi/180;                 % fixed sigma in rad
 
 % Calculate the angular velocity of beta and delta
-alpha_angles = alpha+alphadot*t;
+alpha_angles = [];
 beta_angles = [];
 delta_angles = [];
 for idx = 1:length(t)
@@ -35,11 +35,14 @@ for idx = 1:length(t)
     omega23 = inv(J)*b;
     betadot = omega23(1);
     deltadot = omega23(2);
-
-    beta = beta + betadot;
+    
+    alpha = alpha + alphadot * .001;
+    alpha_angles(idx) = alpha;
+    
+    beta = beta + betadot * .001;
     beta_angles(idx) = beta;
 
-    delta = delta + deltadot;
+    delta = delta + deltadot *.001;
     delta_angles(idx) = delta;
 end
 

@@ -36,11 +36,11 @@ for idx = 1:length(t)
     betadot = omega23(1);
     deltadot = omega23(2);
 
-    beta = beta + betadot;
-    beta_angles(idx) = beta;
+    beta = beta + betadot
+    beta_angles[idx] = beta
 
-    delta = delta + deltadot;
-    delta_angles(idx) = delta;
+    delta = delta + deltadot
+    delta_angles[idx] = delta
 end
 
 % Calculate the positions of A, B, C, D in the 4-bar frame
@@ -70,8 +70,7 @@ F = C + cb * L6;
 G = [];
 for idx = 1:length(E)
     [Gx,Gy] = circcirc(E(1,idx), E(2,idx), L8, F(1,idx), F(2,idx), L7);
-    [~,I] = min(Gy);
-    G(:,idx) = [Gx(I);Gy(I)];
+    G(:,idx) = [Gx(1);Gy(1)];
 end
 
 % Calculate H based off of E and G

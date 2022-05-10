@@ -1,7 +1,8 @@
 
 function animation(Output)
 
-t = [0:500];    % time range
+t = [0:100];    % time range
+
 for point = 1:length(t)
 
         % create wing vectors
@@ -27,8 +28,6 @@ for point = 1:length(t)
         plot(FG_x, FG_y,"-b","MarkerSize",5)
         plot(EG_x, EG_y,"-b","MarkerSize",5)
         plot(EH_x, EH_y,"-b","MarkerSize",5)
-%         xline(Output(7,point))
-%         yline(Output(8,point))
 
         trail_x = Output(1:1,point)
         trail_y = Output(1:2,point)

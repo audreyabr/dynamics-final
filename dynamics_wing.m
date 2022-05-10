@@ -33,8 +33,8 @@ for idx = 1:length(t)
     J = [-L2*sin(beta) L3*sin(delta); L2*cos(beta) -L3*cos(delta)];
     b = [alphadot*L1*sin(alpha); -alphadot*L1*cos(alpha)];
     omega23 = inv(J)*b;
-    betadot = omega23(1);
-    deltadot = omega23(2);
+    betadot = omega23(1)
+    deltadot = omega23(2)
     
     alpha = alpha + alphadot * .001;
     alpha_angles(idx) = alpha;
@@ -49,8 +49,9 @@ end
 % Calculate the positions of A, B, C, D in the 4-bar frame
 A = [0;0]*t;
 B = [L1*cos(alpha_angles); L1*sin(alpha_angles)] + A;
-C = B+[beta_angles*L2];
 D = [L4;0]+A; 
+C = [L3*cos(delta_angles); L3*sin(delta_angles)] + D;
+
 
 % Rotate A, B, C, D to the inertial frame 
 R_sigma = [cos(sigma), -sin(sigma); sin(sigma), cos(sigma)];

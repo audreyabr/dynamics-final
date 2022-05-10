@@ -1,4 +1,4 @@
-function dynamics_wing
+function Points = dynamics_wing()
 clear all
 close all
 
@@ -7,15 +7,15 @@ close all
 alphadot = 100; % input angular velocity in rad/sec 
 t = [0:100];    % time range
 
-L1 = 4;              % length of the rod AB in m
-L2 = 10;             % length of the rod BC in m
-L3 = 7;              % length of the rod CD in m
-L4 = 12;             % length of the rod AD in m
-L5 = 12;             % length of the rod CE in m
-L6 = 4;              % length of the rod CF in m
-L7 = 10;             % length of the rod FG in m
-L8 = 7;              % length of the rod EG in m
-L9 = 5;              % length of the rod EH in m
+L1 = .4767;              % length of the rod AB in m
+L2 = 2;             % length of the rod BC in m
+L3 = 1.2562;              % length of the rod CD in m
+L4 = 2.2169;             % length of the rod AD in m
+L5 = 4;             % length of the rod CE in m
+L6 = 0.5;              % length of the rod CF in m
+L7 = 4;             % length of the rod FG in m
+L8 = .5386;              % length of the rod EG in m
+L9 = 4;              % length of the rod EH in m
 ls = [L1, L2, L3, L4, L5, L6, L7, L8,L9];
 
 alpha = 45*pi/180;               % initial alpha in rad
@@ -82,4 +82,7 @@ R_phi = [cos(phi), -sin(phi); sin(phi), cos(phi)];
 eh = R_phi * eg;
 
 H = E + eh * L9;
+
+Points = [A;B;C;D;E;F;G;H];
+end
 

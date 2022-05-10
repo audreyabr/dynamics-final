@@ -1,4 +1,4 @@
-function Output = dynamics_wing()
+function Output = dynamics_wing(phi, sigma, L3, L4)
 clear all
 close all
 
@@ -9,8 +9,8 @@ t = [0:100];    % time range
 
 L1 = .4767;              % length of the rod AB in m
 L2 = 2;             % length of the rod BC in m
-L3 = 1.2562;              % length of the rod CD in m
-L4 = 2.2169;             % length of the rod AD in m
+%L3 = 1.2562;              % length of the rod CD in m
+%L4 = 2.2169;             % length of the rod AD in m
 L5 = 4;             % length of the rod CE in m
 L6 = 0.5;              % length of the rod CF in m
 L7 = 4;             % length of the rod FG in m
@@ -22,8 +22,8 @@ alpha = 45*pi/180;               % initial alpha in rad
 beta = 24.652*pi/180;            % initial beta in rad
 delta = 90.6794*pi/180;          % initial delta in rad
 
-phi = 60*pi/180;                   % fixed phi in rad (wing angle)
-sigma = 60*pi/180;                 % fixed sigma in rad (body angle)
+%phi = 60*pi/180;                   % fixed phi in rad (wing angle)
+%sigma = 60*pi/180;                 % fixed sigma in rad (body angle)
 
 % Calculate the angular velocity of beta and delta
 alpha_angles = [];

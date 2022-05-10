@@ -63,11 +63,11 @@ D = R_sigma*D;
 % Calcualte F and E based of the position of C
 CD = D - C;
 cd = CD./norm(CD);
-E = C + cd * L5;
+E = C - (cd * L5);
 
 CB = B - C;
 cb = CB./norm(CB);
-F = C + cb * L6;
+F = C - (cb * L6);
 
 % Calculate G based off of intersection of circles
 G = [];

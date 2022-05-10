@@ -1,11 +1,8 @@
 function Output = dynamics_wing(phi, sigma, L3, L4)
-clear all
-close all
-
 % Define system parameters
 
 alphadot = 100; % input angular velocity in rad/sec 
-t = [0:100];    % time range
+t = [0:500];    % time range
 
 L1 = .4767;              % length of the rod AB in m
 L2 = 2;             % length of the rod BC in m
@@ -16,7 +13,6 @@ L6 = 0.5;              % length of the rod CF in m
 L7 = 4;             % length of the rod FG in m
 L8 = .5386;              % length of the rod EG in m
 L9 = 4;              % length of the rod EH in m
-ls = [L1, L2, L3, L4, L5, L6, L7, L8,L9];
 
 alpha = 45*pi/180;               % initial alpha in rad
 beta = 24.652*pi/180;            % initial beta in rad

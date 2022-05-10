@@ -1,4 +1,4 @@
-function Points = dynamics_wing()
+function Output = dynamics_wing()
 clear all
 close all
 
@@ -84,5 +84,7 @@ eh = R_phi * eg;
 H = E + eh * L9;
 
 Points = [A;B;C;D;E;F;G;H];
+Angles = [alpha_angles; beta_angles; delta_angles];
+Output = [Points;Angles];
 end
 

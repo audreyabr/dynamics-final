@@ -22,8 +22,8 @@ alpha = 45*pi/180;               % initial alpha in rad
 beta = 24.652*pi/180;            % initial beta in rad
 delta = 90.6794*pi/180;          % initial delta in rad
 
-phi = 60*pi/180;                   % fixed phi in rad (wing angle)
-sigma = 60*pi/180;                 % fixed sigma in rad (body angle)
+phi = 30*pi/180;                   % fixed phi in rad
+sigma = 30*pi/180;                 % fixed sigma in rad
 
 % Calculate the angular velocity of beta and delta
 alpha_angles = [];
@@ -64,14 +64,14 @@ D = R_sigma*D;
 CD = D - C;
 cd = [];
 for idx = 1:length(CD)
-    cd(:,idx) = CD(:,idx)/norm(CD(:,idx));
+    cd(idx) = CD(:,idx)/norm(CD(:,idx));
 end
 E = C + (cd * L5);
 
 CB = B - C;
-cb = [];
-for idx = 1:length(CB)
-    cb(:,idx) = CB(:,idx)/norm(CB(:,idx));
+cd = [];
+for idx = 1:length(CD)
+    cd(idx) = CD(:,idx)/norm(CD(:,idx));
 end
 F = C + (cb * L6);
 
@@ -85,17 +85,13 @@ end
 
 % Calculate H based off of E and G
 EG = G - E;
-eg = [];
-for idx = 1:length(EG)
-    eg(:,idx) = EG(:,idx)/norm(EG(:,idx));
-end
+eg = EG./norm(EG);
 
 R_phi = [cos(phi), -sin(phi); sin(phi), cos(phi)];
 eh = R_phi * eg;
 
 H = E + eh * L9;
 
-%Assemble Output
 Points = [A;B;C;D;E;F;G;H];
 Angles = [alpha_angles; beta_angles; delta_angles];
 Output = [Points;Angles];
